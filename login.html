@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>BacheTrack | Sistema Nacional de Infraestructura Vial</title>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- ========================================
+       CABECERA PRINCIPAL
+  ========================================= -->
+  <header class="header-portal">
+    <div class="header-portal-inner">
+
+      <div class="brand-official">
+
+        <div class="brand-emblem-gold">
+          <span>BT</span>
+        </div>
+
+        <div class="brand-text-single">
+          <h1>BacheTrack</h1>
+          <p>Sistema Nacional de Infraestructura Vial</p>
+        </div>
+
+      </div>
+
+      <div class="system-status">
+        <span class="status-dot"></span>
+        Sistema en línea
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ========================================
+       CONTENIDO PRINCIPAL
+  ========================================= -->
+  <main class="main-wrapper-centered">
+
+    <section class="login-card-container">
+
+      <!-- ENCABEZADO DEL LOGIN -->
+      <div class="login-card-header">
+        <h3>Acceso al Sistema</h3>
+        <p>Ingrese sus credenciales para continuar</p>
+      </div>
+
+
+      <!-- CUERPO DEL LOGIN -->
+      <div class="login-card-body">
+
+        <!-- MENSAJE DE ALERTA -->
+        <div id="alert-msg" class="alert-box">
+          <span id="alert-text"></span>
+        </div>
+
+
+        <!-- FORMULARIO -->
+        <form id="form-credenciales" onsubmit="autenticarCredenciales(event)">
+
+          <div class="form-group">
+
+            <label for="user-email">
+              Correo Electrónico
+              <span class="req">*</span>
+            </label>
+
+            <input
+              type="email"
+              id="user-email"
+              class="form-control"
+              placeholder="correo@ejemplo.com"
+              autocomplete="email"
+              required
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="user-pass">
+              Contraseña
+              <span class="req">*</span>
+            </label>
+
+            <input
+              type="password"
+              id="user-pass"
+              class="form-control"
+              placeholder="••••••••••••"
+              autocomplete="current-password"
+              required
+            />
+
+          </div>
+
+
+          <button type="submit" class="btn-submit-gob">
+            Iniciar sesión
+          </button>
+
+        </form>
+
+
+        <!-- AVISO DE PRIVACIDAD -->
+        <div class="privacy-notice">
+
+          <strong>Privacidad y seguridad:</strong>
+
+          La información proporcionada se utiliza exclusivamente
+          para la identificación y operación dentro de BacheTrack.
+
+          <a href="#">
+            Consultar aviso de privacidad
+          </a>.
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ========================================
+       PIE DE PÁGINA
+  ========================================= -->
+  <footer class="footer-official">
+
+    <div class="footer-inner">
+
+      <div class="footer-col">
+
+        <h4>BacheTrack</h4>
+
+        <p>
+          Plataforma para el registro, seguimiento y gestión
+          de incidencias en la infraestructura vial.
+        </p>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h4>Plataforma</h4>
+
+        <ul>
+          <li>
+            <a href="#">Acerca de BacheTrack</a>
+          </li>
+
+          <li>
+            <a href="#">Aviso de privacidad</a>
+          </li>
+
+          <li>
+            <a href="#">Términos de uso</a>
+          </li>
+        </ul>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h4>Soporte</h4>
+
+        <p>Centro de asistencia técnica</p>
+
+        <p style="margin-top:4px; font-weight:700;">
+          soporte@bachetrack.mx
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+      BacheTrack © 2026 — Sistema de Gestión de Infraestructura Vial
+    </div>
+
+  </footer>
+
+
+  <!-- ========================================
+       JAVASCRIPT
+  ========================================= -->
+  <script>
+
+    /*
+     * Mostrar mensajes al usuario
+     */
+    function mostrarAlerta(msg, esError = true) {
+
+      const box = document.getElementById('alert-msg');
+      const text = document.getElementById('alert-text');
+
+      box.className =
+        'alert-box visible ' +
+        (esError ? 'error' : 'success');
+
+      text.textContent =
+        (esError ? '⚠️ ' : '✅ ') + msg;
+    }
+
+
+    /*
+     * Ocultar mensajes
+     */
+    function ocultarAlerta() {
+
+      const box = document.getElementById('alert-msg');
+
+      box.className = 'alert-box';
+    }
+
+
+    /*
+     * Autenticación mediante correo y contraseña
+     */
+    function autenticarCredenciales(e) {
+
+      e.preventDefault();
+
+      const email =
+        document
+          .getElementById('user-email')
+          .value
+          .trim()
+          .toLowerCase();
+
+      const password =
+        document
+          .getElementById('user-pass')
+          .value;
+
+
+      /*
+       * Validaciones básicas
+       */
+      if (!email || !password) {
+
+        mostrarAlerta(
+          "Ingrese su correo electrónico y contraseña.",
+          true
+        );
+
+        return;
+      }
+
+
+      mostrarAlerta(
+        "Verificando credenciales...",
+        false
+      );
+
+
+      /*
+       * Datos temporales para la demostración.
+       *
+       * Posteriormente esta parte deberá ser
+       * reemplazada por autenticación real
+       * mediante una API o servidor.
+       */
+
+      let role = 'ciudadano';
+      let name = 'Fernando Jiménez Rendón';
+      let municipality =
+        'Veracruz — Municipio de Orizaba';
+
+
+      /*
+       * Identificación temporal del rol
+       */
+      if (
+        email.includes('director') ||
+        email.includes('admin') ||
+        email.includes('obras')
+      ) {
+
+        role = 'director';
+
+        name =
+          'Ing. Fernando Jiménez Rendón';
+
+        municipality =
+          'Veracruz — Municipio de Orizaba (Clave 30118)';
+
+      }
+
+      else if (
+        email.includes('cuadrilla') ||
+        email.includes('operador')
+      ) {
+
+        role = 'operador';
+
+        name =
+          'Téc. Carlos Mendoza Silva';
+
+        municipality =
+          'Puebla — Municipio de Puebla (Clave 21114)';
+
+      }
+
+
+      /*
+       * Simulación de autenticación
+       */
+      setTimeout(() => {
+
+        localStorage.setItem(
+          'user_session',
+          JSON.stringify({
+
+            name: name,
+            email: email,
+            role: role,
+            municipality: municipality,
+            showModal: true
+
+          })
+        );
+
+
+        /*
+         * Redirección al panel
+         */
+        window.location.href =
+          'dashboard.html';
+
+      }, 800);
+
+    }
+
+  </script>
+
+</body>
+
+</html>

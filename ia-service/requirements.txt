@@ -1,0 +1,8 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+torchvision
+ultralytics
+huggingface_hub
+fastapi
+uvicorn
+python-multipart

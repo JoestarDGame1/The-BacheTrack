@@ -1,0 +1,20 @@
+# Node
+node_modules/
+.env
+smartpavement.db
+uploads/
+
+# Python / servicio IA
+.venv/
+__pycache__/
+*.pyc
+
+# Modelos (se descargan de Hugging Face)
+*.pt
+*.onnx
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
